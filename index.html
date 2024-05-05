@@ -14,7 +14,7 @@
     <!--INPUT-->
     <div class="container mt-5">
         <div class="row">
-            <div class="col-6 contain-form d-flex">
+            <div class="col-6 contain-form d-flex container-fluid ">
                 <!--Dropdown-->
                 <select id="inputSelezionato" class="form-control">
                     <option value="id">ID</option>
@@ -29,20 +29,25 @@
             </div>
         </div>
 
+        <div class="row mt-3">
+            <div class="col-6 container-fluid ">
+                <!--OUTPUT-->
+                <!--Tabella per inserire i dati degli utenti-->
+                <table class="tabella"> <!--contenitore della tabella-->
+                    <thead> <!--Riga con le intestazioni delle colonne-->
+                        <tr>
+                            <th>ID</th> <!--intestazioni della tabella-->
+                            <th>NAME</th>
+                            <th>USERNAME</th>
+                            <th>EMAIL</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersData">
 
-        <!--OUTPUT-->
-        <!--Tabella per inserire i dati degli utenti-->
-        <table class="tabella"> <!--contenitore della tabella-->
-            <thead> <!--Riga con le intestazioni delle colonne-->
-                <tr>
-                    <th>ID</th> <!--intestazioni della tabella-->
-                    <th>NAME</th>
-                    <th>USERNAME</th>
-                    <th>EMAIL</th>
-                </tr>
-            </thead>
-            <tbody id="usersData"></tbody> <!--andrà a contenere i dati che richiameremo-->
-        </table>
+                    </tbody> <!--andrà a contenere i dati che richiameremo-->
+                </table>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

@@ -16,13 +16,14 @@ async function fetchData() {
     //console.log(users);
     return users;
 }
+//console.log(fetchData())
 
 //fetchData() //richiamare la funzione per vedere in console l'array
 
 //funzione che stampa i dati 
 function datiUtenti(users) {
     //pulisco prima la pagina
-    tableData.innerHTML = " ";
+    //tableData.innerHTML = "";
     //ciclo della risposta fetch per creare un elemento tr ad ogni dato
     users.forEach(user => {
         //variabile creazione elemento per riga
@@ -36,9 +37,44 @@ function datiUtenti(users) {
         `;
         //appenChild per appendere il nuovo elemento creato alla costante con classe tbody
         tableData.appendChild(tableRow);
+        return tableRow;
     });
+  
 }
 
-fetchData(datiUtenti(users));
+//bisogna effettuare la chiamata alla funzione 
+//abbiamo chiamato la fetchData() come fatto sopra, bisgona gestire anche i dati con la promise:
+
+/*fetchData()
+.then(users => {
+    datiUtenti(users);
+})
+.catch(error => {
+    console.error("Errore nel recupero dei dati:", error);
+})*/ 
+
+//quindi oltra a richiamare e inserire i dati nell'innerhTML bisogna gestire i dati 
+//con una fusione delle due funzioni in una promise
 
 
+//Filtro considerando il select del dropdown e l'input che viene scritto
+function filtro(users) {
+    //variabile per i valori del select
+    const filterSelected = selected.value;
+    //variabile per i valori input scritti dall'utente
+    const filterInput = inputText.value.toLowerCase();
+    //aggiungere il filtro collegandolo alle variabili definite sopra
+    return users.filter(user => user[filterSelected].toLowerCase().includes(inputText.value));
+}
+
+//riprendo parte della funzione commentata sopra che unisce le due funzioni gestendo i dati
+fetchData()
+.then(users => {
+    datiUtenti(users);
+    //riprendere il filtro aggiungendo un addEvent necessario per quando verrà scritto l'input
+    //uso il puntatore inputText che è la variabile collegata all'elemento form
+    inputText.addEventListener("input", () => { //ad ogni input inserito
+        const utentiFiltrati = filtro(users); //riprende ciò che è stato impostato nella funzione filtro
+        datiUtenti(filtro); //riporta tutte le info filtrate nella tabella (rappresentata dall'argomento della funzione in cui sono stati gestiti i dati)
+    });
+});
