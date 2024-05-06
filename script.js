@@ -52,8 +52,7 @@ function datiUtenti(users) {
     console.error("Errore nel recupero dei dati:", error);
 })*/ 
 
-//quindi oltra a richiamare e inserire i dati nell'innerhTML bisogna gestire i dati 
-//con una fusione delle due funzioni in una promise
+
 
 
 //Filtro considerando il select del dropdown e l'input che viene scritto
