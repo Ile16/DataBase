@@ -1,7 +1,7 @@
 //I PUNTATORI  
 //varibaile per l'endpoint da cui prenderemo i dati degli utenti 
 const urlUsers = "https://jsonplaceholder.typicode.com/users"
-//puntatore dell'input che viene selezionato per la ricerca utente
+//puntatore dell'input che viene selezionato 
 const selected = document.getElementById("inputSelezionato");
 //puntatore dell'input inserito 
 const inputText = document.getElementById("inputInserito");
@@ -18,12 +18,12 @@ async function fetchData() {
 }
 //console.log(fetchData())
 
-//fetchData() //richiamare la funzione per vedere in console l'array
+//fetchData() 
 
 //funzione che stampa i dati 
 function datiUtenti(users) {
     //pulisco prima la pagina
-    //tableData.innerHTML = "";
+    tableData.innerHTML = "";
     //ciclo della risposta fetch per creare un elemento tr ad ogni dato
     users.forEach(user => {
         //variabile creazione elemento per riga
@@ -37,13 +37,12 @@ function datiUtenti(users) {
         `;
         //appenChild per appendere il nuovo elemento creato alla costante con classe tbody
         tableData.appendChild(tableRow);
-        return tableRow;
     });
   
 }
 
 //bisogna effettuare la chiamata alla funzione 
-//abbiamo chiamato la fetchData() come fatto sopra, bisgona gestire anche i dati con la promise:
+// chiamato la fetchData() come fatto sopra, bisgona gestire anche i dati con la promise:
 
 /*fetchData()
 .then(users => {
@@ -64,12 +63,13 @@ function filtro(users) {
     //variabile per i valori input scritti dall'utente
     const filterInput = inputText.value.toLowerCase();
     //aggiungere il filtro collegandolo alle variabili definite sopra
-    return users.filter(user => user[filterSelected].toLowerCase().includes(inputText.value));
+    return users.filter(user => user[filterSelected].toLowerCase().includes(filterInput.value));
 }
+
 
 //riprendo parte della funzione commentata sopra che unisce le due funzioni gestendo i dati
 fetchData()
-.then(users => {
+.then((users) => {
     datiUtenti(users);
     //riprendere il filtro aggiungendo un addEvent necessario per quando verrà scritto l'input
     //uso il puntatore inputText che è la variabile collegata all'elemento form
