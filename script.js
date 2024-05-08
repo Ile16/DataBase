@@ -62,7 +62,7 @@ function filtro(users) {
     //variabile per i valori input scritti dall'utente
     const filterInput = inputText.value.toLowerCase();
     //aggiungere il filtro collegandolo alle variabili definite sopra
-    return users.filter(user => user[filterSelected].toLowerCase().includes(filterInput.value));
+    return users.filter(user => user[filterSelected].toLowerCase().includes(filterInput));
 }
 
 
@@ -74,6 +74,7 @@ fetchData()
     //uso il puntatore inputText che è la variabile collegata all'elemento form
     inputText.addEventListener("input", () => { //ad ogni input inserito
         const utentiFiltrati = filtro(users); //riprende ciò che è stato impostato nella funzione filtro
-        datiUtenti(filtro); //riporta tutte le info filtrate nella tabella (rappresentata dall'argomento della funzione in cui sono stati gestiti i dati)
+        //richiamare la costante in cui ho tutto filtrato
+        datiUtenti(utentiFiltrati); //riporta tutte le info filtrate nella tabella (rappresentata dall'argomento della funzione in cui sono stati gestiti i dati)
     });
 });
